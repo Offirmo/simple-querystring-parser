@@ -1,0 +1,10 @@
+{
+  "name": "@offirmo/simple-querystring-parser",
+  "version": "0.0.1",
+  "description": "A trivial, low footprint, no dependency, url querystring parser for the browser including typescript typings",
+  "repository": "git@offirmo.github.com:Offirmo/simple-querystring-parser.git",
+  "author": "Offirmo <offirmo.net@gmail.com>",
+  "license": "UNLICENSED",
+  "main": "index.js",
+  "typings": "index.d.ts"
+}
