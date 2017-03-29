@@ -6,16 +6,16 @@
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
 		define(function () {
-			return (root.SimpleQuerystringParser = factory());
+			return (root.SimpleQuerystringParser = factory())
 		});
 	} else if (typeof module === 'object' && module.exports) {
 		// Node. Does not work with strict CommonJS, but
 		// only CommonJS-like environments that support module.exports,
 		// like Node.
-		module.exports = factory();
+		module.exports = factory()
 	} else {
 		// Browser globals
-		root.SimpleQuerystringParser = factory();
+		root.SimpleQuerystringParser = factory()
 	}
 }(this, function () {
 	"use strict";
@@ -39,11 +39,12 @@
 		return val // no inference
 	}
 
-	function parse(querystring, options = {}) {
+	function parse(querystring, options) {
+		options = options || {}
 		options.valueDecoder = options.valueDecoder || lightQuerystringValueDecoder
 		// Create an object with no prototype
 		// https://github.com/sindresorhus/query-string/issues/47
-		const result = Object.create(null)
+		var result = Object.create(null)
 
 		if (typeof querystring !== 'string')
 			return result
@@ -54,23 +55,25 @@
 		if (!querystring)
 			return result
 
-		const raw_options = querystring.split('&')
-		return raw_options.reduce((acc, raw_option) => {
+		var raw_options = querystring.split('&')
+		return raw_options.reduce(function (acc, raw_option) {
 			if (!raw_option) return acc
 
-			const [ key, value ] = raw_option.split('=').map(decodeURIComponent)
+			var split = raw_option.split('=')
+			var key = decodeURIComponent(split[0])
+			var value = decodeURIComponent(split.slice(1).join('=')) || undefined
 			acc[key] = options.valueDecoder(value)
 			return acc
 		}, result)
 	}
 
-	function parseLocationParams(location, options = {}) {
+	function parseLocationParams(location, options) {
 		return parse(location.search, options)
 	}
 
 	return {
-		parse,
-		parseLocationParams,
-		lightQuerystringValueDecoder,
+		parse: parse,
+		parseLocationParams: parseLocationParams,
+		lightQuerystringValueDecoder: lightQuerystringValueDecoder
 	}
 }))
