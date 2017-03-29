@@ -39,7 +39,6 @@
 		return val // no inference
 	}
 
-
 	function parse(querystring, options = {}) {
 		options.valueParser = options.valueParser || lightQuerystringValueDecoder
 		// Create an object with no prototype
@@ -59,7 +58,7 @@
 		return raw_options.reduce((acc, raw_option) => {
 			if (!raw_option) return acc
 
-			const [ key, value ] = raw_option.split('=')
+			const [ key, value ] = raw_option.split('=').map(decodeURIComponent)
 			acc[key] = options.valueParser(value)
 			return acc
 		}, result)

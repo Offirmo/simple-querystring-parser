@@ -6,15 +6,9 @@
  */
 export as namespace SimpleQuerystringParser
 
-/*~ If there are types, properties, or methods inside dotted names
- *~ of the module, declare them inside a 'namespace'.
- */
-declare namespace SimpleQuerystringParser {
-	
-	export type Value = number | boolean | string
-	export type Options = { [k: string]: Value }
+export type Value = number | boolean | string
+export type Options = { [k: string]: Value }
 
-	export function parse(querystring: string): Options
-	export function parse(location: Location): Options
-	export function lightQuerystringValueDecoder(value: string | undefined): Value
-}
+export function parse(querystring: string): Options
+export function parse(location: Location): Options
+export function lightQuerystringValueDecoder(value: string | undefined): Value

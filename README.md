@@ -1,6 +1,7 @@
 # simple-querystring-parser
-A trivial, low footprint, no dependency, url querystring parser for the browser including typescript typings
+A trivial, low footprint, no dependency, UMD-compatible url querystring parser for the browser including typescript typings
 
+Querystring ? params ? search ? Interesting read:
 #
 
 This lib does a very light parsing of values to enhance their type, covering only the most useful cases:
