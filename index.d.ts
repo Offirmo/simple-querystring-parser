@@ -10,5 +10,5 @@ export type Value = number | boolean | string
 export type Options = { [k: string]: Value }
 
 export function parse(querystring: string): Options
-export function parse(location: Location): Options
+export function parseLocationParams(location: Location): Options
 export function lightQuerystringValueDecoder(value: string | undefined): Value
