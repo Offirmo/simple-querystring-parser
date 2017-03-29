@@ -5,9 +5,9 @@ This version departs from the venerable https://github.com/sindresorhus/query-st
 - only 75 lines, no dependencies
 - parses only (lighter)
 - attempts to do a light type inference from the values (number, boolean)
-- interprets "no value" as true (boolean) XXX this is non-standard but we consider it better (i.e. interpreting it as a flag)
+- interprets "no value" as true (boolean) **XXX this is non-standard** but we consider it better (i.e. interpreting it as a flag)
 - typescript compatible
-- UMD compatible, but also exposes itself as a global var , even when loaded by a module loader. Reason: this lib may be needed by low-level code, for ex. a "verbose" option activating logs should be detected very early, maybe from inline code without a loader.
+- UMD compatible, but also exposes itself as a global var, even when loaded by a module loader. Reason: this lib may be needed by low-level code, for ex. a "verbose" option activating logs should be detected very early, maybe from inline code without a loader.
 
 
 # Usage
@@ -17,16 +17,22 @@ yarn add @offirmo/simple-querystring-parser
 npm install --save @offirmo/simple-querystring-parser
 ```
 
+Base, 99% of the time:
 ```javascript
 import * as SimpleQuerystringLoader from '@offirmo/simple-querystring-parser'
 
 const options = SimpleQuerystringLoader.parse(location.params)
+```
+
+Rare stuff:
+```javascript
+import * as SimpleQuerystringLoader from '@offirmo/simple-querystring-parser'
 
 // an alias
 const options = SimpleQuerystringLoader.parseLocationParams(location)
 
 // if you don't like the type inference or want to write your own:
-const options = SimpleQuerystringLoader.parse(location.params, {
+SimpleQuerystringLoader.parse(location.params, {
 	valueDecoder: value => value
 })
 
