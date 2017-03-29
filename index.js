@@ -40,7 +40,7 @@
 	}
 
 	function parse(querystring, options = {}) {
-		options.valueParser = options.valueParser || lightQuerystringValueDecoder
+		options.valueDecoder = options.valueDecoder || lightQuerystringValueDecoder
 		// Create an object with no prototype
 		// https://github.com/sindresorhus/query-string/issues/47
 		const result = Object.create(null)
@@ -59,7 +59,7 @@
 			if (!raw_option) return acc
 
 			const [ key, value ] = raw_option.split('=').map(decodeURIComponent)
-			acc[key] = options.valueParser(value)
+			acc[key] = options.valueDecoder(value)
 			return acc
 		}, result)
 	}
