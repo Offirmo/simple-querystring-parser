@@ -9,6 +9,6 @@ export as namespace SimpleQuerystringParser
 export type Value = number | boolean | string
 export type Options = { [k: string]: Value }
 
-export function parse(querystring: string): Options
-export function parseLocationParams(location: Location): Options
+export function parse(querystring: string, options: { valueDecoder: (s: string | undefined) => Value }): Options
+export function parseLocationParams(location: Location, options: { valueDecoder: (s: string | undefined) => Value }): Options
 export function lightQuerystringValueDecoder(value: string | undefined): Value

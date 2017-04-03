@@ -1,7 +1,4 @@
-// UMD template from here
-// https://github.com/umdjs/umd/blob/master/templates/returnExportsGlobal.js
-
-
+// UMD template from here https://github.com/umdjs/umd/blob/master/templates/returnExportsGlobal.js
 (function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
@@ -22,8 +19,7 @@
 
 	function lightQuerystringValueDecoder(val) {
 		// A bare parameter, is likely to mean true, like ?showUsers
-		// WARNING this is a voluntary departure from the standard
-		// http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
+		// WARNING this is a voluntary departure from the standard http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
 		if (typeof val !== 'string')
 			return true
 
@@ -42,8 +38,7 @@
 	function parse(querystring, options) {
 		options = options || {}
 		options.valueDecoder = options.valueDecoder || lightQuerystringValueDecoder
-		// Create an object with no prototype
-		// https://github.com/sindresorhus/query-string/issues/47
+		// Create an object with no prototype https://github.com/sindresorhus/query-string/issues/47
 		var result = Object.create(null)
 
 		if (typeof querystring !== 'string')
